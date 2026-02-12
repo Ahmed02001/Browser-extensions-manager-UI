@@ -1,0 +1,67 @@
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.container-fluid {
+  width: 100%;
+}
+
+@mixin gridGenerator($colNum, $screenInfix, $breakpoint) {
+  @if ($screenInfix == "") {
+    .container {
+      width: 100%;
+    }
+    @media (min-width: $breakpoint) {
+      .d-none {
+        display: none;
+      }
+      .d-block {
+        display: block;
+      }
+      .d-flex {
+        display: flex;
+      }
+      @for $i from 1 through $colNum {
+        .col-#{$i} {
+          width: ($i / $colNum) * 100%;
+        }
+        .offset-#{$i} {
+          margin-left: ($i / $colNum) * 100%;
+        }
+      }
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      .container {
+        width: $breakpoint;
+        margin: auto;
+      }
+
+      .d-#{$screenInfix}-none {
+        display: none;
+      }
+      .d-#{$screenInfix}-block {
+        display: block;
+      }
+      .d-#{$screenInfix}-flex {
+        display: flex;
+      }
+      @for $i from 1 through $colNum {
+        .col-#{$screenInfix}-#{$i} {
+          width: ($i / $colNum) * 100%;
+        }
+        .offset-#{$screenInfix}-#{$i} {
+          margin-left: ($i / $colNum) * 100%;
+        }
+      }
+    }
+  }
+}
+
+@include gridGenerator(12, "", 0);
+@include gridGenerator(12, "sm", 576px);
+@include gridGenerator(12, "md", 768px);
+@include gridGenerator(12, "lg", 992px);
+@include gridGenerator(12, "xl", 1200px);
+@include gridGenerator(12, "xxl", 1400px);

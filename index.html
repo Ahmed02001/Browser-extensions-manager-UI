@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Browser extensions manager UI</title>
+    <link rel="stylesheet" href="scss/style.css" />
+    <style>
+      body {
+        background-image: linear-gradient(180deg, #040918 0%, #091540 100%);
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #545969;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 6px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: #de473f;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px #c7221a;
+      }
+
+      input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+      }
+
+      /* Rounded sliders */
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+      .logo {
+        background-image: linear-gradient(to top, white)
+          url(assets/images/logo.svg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="padding: 10px">
+      <header>
+        <div
+          class="row main-color"
+          style="margin: 30px 0; padding: 14px; border-radius: 20px"
+        >
+          <div class="logo col-6">
+            <img class="logo" alt="" />
+          </div>
+          <div class="col-6" style="text-align: right">
+            <img
+              class="border"
+              src="assets/images/icon-sun.svg"
+              alt=""
+              style="padding: 10px; border-radius: 10px"
+            />
+          </div>
+        </div>
+      </header>
+      <nav>
+        <div class="row text-color" style="padding: 10px; margin: 20px 0">
+          <h2
+            class="col-12 col-md-6"
+            style="font-size: 30px; font-weight: 700; padding: 5px"
+          >
+            Extentions List
+          </h2>
+          <ul
+            class="col-12 col-md-6 d-flex"
+            style="justify-content: flex-end; text-align: center; gap: 20px"
+          >
+            <li class="col-4 btn btn-hover btn-primary">All</li>
+            <li class="col-4 btn btn-hover btn-primary">Active</li>
+            <li class="col-4 btn btn-hover btn-primary">Inactive</li>
+          </ul>
+        </div>
+      </nav>
+      <section>
+        <div class="row">
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-devlens.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  DevLens
+                </h3>
+                <p class="t-p-color">
+                  Quickly inspact page layouts and visualize element boundaries
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-style-spy.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  StyleSpy
+                </h3>
+                <p class="t-p-color">
+                  Instantly analyze and copy CSS from any webpage element
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-speed-boost.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  SpeedBoost
+                </h3>
+                <p class="t-p-color">
+                  Optimizes browser resource usage to accelerate page loading.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-json-wizard.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  JSONWizerd
+                </h3>
+                <p class="t-p-color">
+                  Formats, validates, and prettifies JSON responses in-browser.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-tab-master-pro.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  TabMaster Pro
+                </h3>
+                <p class="t-p-color">
+                  Organizes browser tabs into groups and sessions.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-viewport-buddy.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  ViewportBuddy
+                </h3>
+                <p class="t-p-color">
+                  Simulates various screen resolutions directly within the
+                  browser.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-markup-notes.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  Markup Notes
+                </h3>
+                <p class="t-p-color">
+                  Enables annotation and notes directly onto webpages for
+                  collaborative debugging.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-grid-guides.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  GridGuides
+                </h3>
+                <p class="t-p-color">
+                  Overlay customizable grids and alignment guides on any
+                  webpage.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-palette-picker.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  Palette Picker
+                </h3>
+                <p class="t-p-color">
+                  Instantly extracts color palettes from any webpages.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-link-checker.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  LinkChecker
+                </h3>
+                <p class="t-p-color">
+                  Scans and highlights broken links on any page.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-dom-snapshot.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  Dom Snapshot
+                </h3>
+                <p class="t-p-color">
+                  Capture and export DOM structures quickly.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            class="col-12 col-md-6 col-lg-4 main-color text-color border-card"
+            style="padding: 15px; margin-bottom: 10px; border-radius: 10px"
+          >
+            <div class="row" style="margin-bottom: 40px">
+              <img
+                class="col-2"
+                src="assets/images/logo-console-plus.svg"
+                alt=""
+                style="width: 60px"
+              />
+              <div class="col-9" style="margin-left: 12px">
+                <h3
+                  style="font-size: 20px; margin-bottom: 10px; font-weight: 700"
+                >
+                  ConsolePlus
+                </h3>
+                <p class="t-p-color">
+                  Enhanced developer console with advanced filtering and
+                  logging.
+                </p>
+              </div>
+            </div>
+            <div class="row d-flex" style="justify-content: space-between">
+              <button class="col-4 btn btn-hover btn-primary">Remove</button>
+              <label class="switch">
+                <input type="checkbox" checked />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+.btn {
+  padding: 0.7rem;
+  border-radius: 20px;
+  border: 1px solid #c7c7c7;
+  width: 100px;
+  color: #fbfdfe;
+  cursor: pointer;
+}
+
+.btn-hover {
+  &:hover {
+    background-color: #f25c54;
+    color: black;
+  }
+  &:active {
+    background-color: #c7221a;
+  }
+}
+.btn-primary {
+  background-color: #212636;
+}
